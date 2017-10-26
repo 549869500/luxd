@@ -523,6 +523,7 @@ func handleCreateRawTransaction(s *rpcServer, cmd interface{}, closeChan <-chan 
 	// Add all transaction inputs to a new transaction after performing
 	// some validity checks.
 	mtx := wire.NewMsgTx(wire.TxVersion)
+	mtx.Time = uint32(time.Now().Unix())
 	for _, input := range c.Inputs {
 		txHash, err := chainhash.NewHashFromStr(input.Txid)
 		if err != nil {
@@ -797,6 +798,7 @@ func handleDecodeRawTransaction(s *rpcServer, cmd interface{}, closeChan <-chan 
 	txReply := btcjson.TxRawDecodeResult{
 		Txid:     mtx.TxHash().String(),
 		Version:  mtx.Version,
+		Time:     mtx.Time,
 		Locktime: mtx.LockTime,
 		Vin:      createVinList(&mtx),
 		Vout:     createVoutList(&mtx, s.cfg.ChainParams, nil),
@@ -3209,6 +3211,7 @@ func handleSearchRawTransactions(s *rpcServer, cmd interface{}, closeChan <-chan
 		}
 		result.Vout = createVoutList(mtx, params, filterAddrMap)
 		result.Version = mtx.Version
+		result.Time = mtx.Time
 		result.LockTime = mtx.LockTime
 
 		// Transactions grabbed from the mempool aren't yet in a block,

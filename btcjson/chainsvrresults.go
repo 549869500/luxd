@@ -538,6 +538,7 @@ type SearchRawTransactionsResult struct {
 type TxRawDecodeResult struct {
 	Txid     string `json:"txid"`
 	Version  int32  `json:"version"`
+	Time     uint32 `json:"time"`
 	Locktime uint32 `json:"locktime"`
 	Vin      []Vin  `json:"vin"`
 	Vout     []Vout `json:"vout"`

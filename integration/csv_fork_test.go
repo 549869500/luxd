@@ -141,6 +141,7 @@ func TestBIP0113Activation(t *testing.T) {
 	// to the latest block, but not according to the current median time
 	// past.
 	tx := wire.NewMsgTx(1)
+	tx.Time = 0
 	tx.AddTxIn(&wire.TxIn{
 		PreviousOutPoint: *testOutput,
 	})
@@ -236,6 +237,7 @@ func TestBIP0113Activation(t *testing.T) {
 		// Create a new transaction with a lock-time past the current known
 		// MTP.
 		tx = wire.NewMsgTx(1)
+		tx.Time = 0
 		tx.AddTxIn(&wire.TxIn{
 			PreviousOutPoint: *testOutput,
 		})

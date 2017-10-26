@@ -453,6 +453,11 @@ func calcWitnessSignatureHash(subScript []parsedOpcode, sigHashes *TxSigHashes,
 	binary.LittleEndian.PutUint32(bVersion[:], uint32(tx.Version))
 	sigHash.Write(bVersion[:])
 
+	// First write out, then encode the transaction's version number.
+	var bTime [4]byte
+	binary.LittleEndian.PutUint32(bTime[:], uint32(tx.Time))
+	sigHash.Write(bTime[:])
+
 	// Next write out the possibly pre-calculated hashes for the sequence
 	// numbers of all inputs, and the hashes of the previous outs for all
 	// outputs.
@@ -565,6 +570,7 @@ func shallowCopyTx(tx *wire.MsgTx) wire.MsgTx {
 	// allocations.
 	txCopy := wire.MsgTx{
 		Version:  tx.Version,
+		Time:     tx.Time,
 		TxIn:     make([]*wire.TxIn, len(tx.TxIn)),
 		TxOut:    make([]*wire.TxOut, len(tx.TxOut)),
 		LockTime: tx.LockTime,

@@ -264,6 +264,7 @@ func TestSpendJournalSerialization(t *testing.T) {
 			}},
 			blockTxns: []*wire.MsgTx{{ // Coinbase omitted.
 				Version: 1,
+				Time: 0,
 				TxIn: []*wire.TxIn{{
 					PreviousOutPoint: wire.OutPoint{
 						Hash:  *newHashFromStr("0437cd7f8525ceed2324359c2d0ba26006d92d856a9c20fa0241106ee5a597c9"),
@@ -300,6 +301,7 @@ func TestSpendJournalSerialization(t *testing.T) {
 			}},
 			blockTxns: []*wire.MsgTx{{ // Coinbase omitted.
 				Version: 1,
+				Time: 0,
 				TxIn: []*wire.TxIn{{
 					PreviousOutPoint: wire.OutPoint{
 						Hash:  *newHashFromStr("c0ed017828e59ad5ed3cf70ee7c6fb0f426433047462477dc7a5d470f987a537"),
@@ -318,6 +320,7 @@ func TestSpendJournalSerialization(t *testing.T) {
 				LockTime: 0,
 			}, {
 				Version: 1,
+				Time: 0,
 				TxIn: []*wire.TxIn{{
 					PreviousOutPoint: wire.OutPoint{
 						Hash:  *newHashFromStr("92fbe1d4be82f765dfabc9559d4620864b05cc897c4db0e29adac92d294e52b7"),
@@ -364,6 +367,7 @@ func TestSpendJournalSerialization(t *testing.T) {
 			}},
 			blockTxns: []*wire.MsgTx{{ // Coinbase omitted.
 				Version: 1,
+				Time: 0,
 				TxIn: []*wire.TxIn{{
 					PreviousOutPoint: wire.OutPoint{
 						Hash:  *newHashFromStr("c0ed017828e59ad5ed3cf70ee7c6fb0f426433047462477dc7a5d470f987a537"),
@@ -456,6 +460,7 @@ func TestSpendJournalErrors(t *testing.T) {
 			name: "Force assertion due to missing stxos",
 			blockTxns: []*wire.MsgTx{{ // Coinbase omitted.
 				Version: 1,
+				Time: 0,
 				TxIn: []*wire.TxIn{{
 					PreviousOutPoint: wire.OutPoint{
 						Hash:  *newHashFromStr("0437cd7f8525ceed2324359c2d0ba26006d92d856a9c20fa0241106ee5a597c9"),
@@ -474,6 +479,7 @@ func TestSpendJournalErrors(t *testing.T) {
 			name: "Force deserialization error in stxos",
 			blockTxns: []*wire.MsgTx{{ // Coinbase omitted.
 				Version: 1,
+				Time: 0,
 				TxIn: []*wire.TxIn{{
 					PreviousOutPoint: wire.OutPoint{
 						Hash:  *newHashFromStr("0437cd7f8525ceed2324359c2d0ba26006d92d856a9c20fa0241106ee5a597c9"),

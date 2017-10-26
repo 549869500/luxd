@@ -506,6 +506,7 @@ var blockOne = MsgBlock{
 	Transactions: []*MsgTx{
 		{
 			Version: 1,
+			Time: 0,
 			TxIn: []*TxIn{
 				{
 					PreviousOutPoint: OutPoint{

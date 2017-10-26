@@ -317,6 +317,7 @@ func TestCheckTransactionStandard(t *testing.T) {
 			name: "Typical pay-to-pubkey-hash transaction",
 			tx: wire.MsgTx{
 				Version:  1,
+				Time:     0,
 				TxIn:     []*wire.TxIn{&dummyTxIn},
 				TxOut:    []*wire.TxOut{&dummyTxOut},
 				LockTime: 0,
@@ -328,6 +329,7 @@ func TestCheckTransactionStandard(t *testing.T) {
 			name: "Transaction version too high",
 			tx: wire.MsgTx{
 				Version:  wire.TxVersion + 1,
+				Time:     0,
 				TxIn:     []*wire.TxIn{&dummyTxIn},
 				TxOut:    []*wire.TxOut{&dummyTxOut},
 				LockTime: 0,
@@ -340,6 +342,7 @@ func TestCheckTransactionStandard(t *testing.T) {
 			name: "Transaction is not finalized",
 			tx: wire.MsgTx{
 				Version: 1,
+				Time:    0,
 				TxIn: []*wire.TxIn{{
 					PreviousOutPoint: dummyPrevOut,
 					SignatureScript:  dummySigScript,
@@ -356,6 +359,7 @@ func TestCheckTransactionStandard(t *testing.T) {
 			name: "Transaction size is too large",
 			tx: wire.MsgTx{
 				Version: 1,
+				Time:    0,
 				TxIn:    []*wire.TxIn{&dummyTxIn},
 				TxOut: []*wire.TxOut{{
 					Value: 0,
@@ -372,6 +376,7 @@ func TestCheckTransactionStandard(t *testing.T) {
 			name: "Signature script size is too large",
 			tx: wire.MsgTx{
 				Version: 1,
+				Time:    0,
 				TxIn: []*wire.TxIn{{
 					PreviousOutPoint: dummyPrevOut,
 					SignatureScript: bytes.Repeat([]byte{0x00},
@@ -389,6 +394,7 @@ func TestCheckTransactionStandard(t *testing.T) {
 			name: "Signature script that does more than push data",
 			tx: wire.MsgTx{
 				Version: 1,
+				Time:    0,
 				TxIn: []*wire.TxIn{{
 					PreviousOutPoint: dummyPrevOut,
 					SignatureScript: []byte{
@@ -406,6 +412,7 @@ func TestCheckTransactionStandard(t *testing.T) {
 			name: "Valid but non standard public key script",
 			tx: wire.MsgTx{
 				Version: 1,
+				Time:    0,
 				TxIn:    []*wire.TxIn{&dummyTxIn},
 				TxOut: []*wire.TxOut{{
 					Value:    100000000,
@@ -421,6 +428,7 @@ func TestCheckTransactionStandard(t *testing.T) {
 			name: "More than one nulldata output",
 			tx: wire.MsgTx{
 				Version: 1,
+				Time:    0,
 				TxIn:    []*wire.TxIn{&dummyTxIn},
 				TxOut: []*wire.TxOut{{
 					Value:    0,
@@ -439,6 +447,7 @@ func TestCheckTransactionStandard(t *testing.T) {
 			name: "Dust output",
 			tx: wire.MsgTx{
 				Version: 1,
+				Time:    0,
 				TxIn:    []*wire.TxIn{&dummyTxIn},
 				TxOut: []*wire.TxOut{{
 					Value:    0,
@@ -454,6 +463,7 @@ func TestCheckTransactionStandard(t *testing.T) {
 			name: "One nulldata output with 0 amount (standard)",
 			tx: wire.MsgTx{
 				Version: 1,
+				Time:    0,
 				TxIn:    []*wire.TxIn{&dummyTxIn},
 				TxOut: []*wire.TxOut{{
 					Value:    0,

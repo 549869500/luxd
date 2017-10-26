@@ -102,6 +102,7 @@ func TestSignTxOutput(t *testing.T) {
 	inputAmounts := []int64{5, 10, 15}
 	tx := &wire.MsgTx{
 		Version: 1,
+		Time: 0,
 		TxIn: []*wire.TxIn{
 			{
 				PreviousOutPoint: wire.OutPoint{

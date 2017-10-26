@@ -172,9 +172,9 @@ func messageSummary(msg wire.Message) string {
 		// No summary.
 
 	case *wire.MsgTx:
-		return fmt.Sprintf("hash %s, %d inputs, %d outputs, lock %s",
+		return fmt.Sprintf("hash %s, %d inputs, %d outputs, time %s, lock %s",
 			msg.TxHash(), len(msg.TxIn), len(msg.TxOut),
-			formatLockTime(msg.LockTime))
+			time.Unix(int64(lockTime), 0).String(), formatLockTime(msg.LockTime))
 
 	case *wire.MsgBlock:
 		header := &msg.Header

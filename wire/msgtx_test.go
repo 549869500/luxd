@@ -146,6 +146,7 @@ func TestTxHash(t *testing.T) {
 
 	// First transaction from block 113875.
 	msgTx := NewMsgTx(1)
+	msgTx.Time = 0
 	txIn := TxIn{
 		PreviousOutPoint: OutPoint{
 			Hash:  chainhash.Hash{},
@@ -200,6 +201,7 @@ func TestWTxSha(t *testing.T) {
 
 	// From block 23157 in a past version of segnet.
 	msgTx := NewMsgTx(1)
+	msgTx.Time = 0
 	txIn := TxIn{
 		PreviousOutPoint: OutPoint{
 			Hash: chainhash.Hash{
@@ -781,6 +783,7 @@ func TestTxWitnessSize(t *testing.T) {
 // multiTx is a MsgTx with an input and output and used in various tests.
 var multiTx = &MsgTx{
 	Version: 1,
+	Time: 0,
 	TxIn: []*TxIn{
 		{
 			PreviousOutPoint: OutPoint{

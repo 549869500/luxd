@@ -1738,6 +1738,7 @@ func Generate(includeLargeReorg bool) (tests [][]TestInstance, err error) {
 		// non-final sequence number in addition to a non-final lock
 		// time.
 		b.Transactions[1].LockTime = 0xffffffff
+		b.Transactions[1].Time = 0
 		b.Transactions[1].TxIn[0].Sequence = 0
 	})
 	rejected(blockchain.ErrUnfinalizedTx)
@@ -1752,6 +1753,7 @@ func Generate(includeLargeReorg bool) (tests [][]TestInstance, err error) {
 		// non-final sequence number in addition to a non-final lock
 		// time.
 		b.Transactions[0].LockTime = 0xffffffff
+		b.Transactions[1].Time = 0
 		b.Transactions[0].TxIn[0].Sequence = 0
 	})
 	rejected(blockchain.ErrUnfinalizedTx)

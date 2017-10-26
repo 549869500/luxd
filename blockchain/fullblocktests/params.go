@@ -60,6 +60,7 @@ var (
 		},
 		Transactions: []*wire.MsgTx{{
 			Version: 1,
+			Time: 0,
 			TxIn: []*wire.TxIn{{
 				PreviousOutPoint: wire.OutPoint{
 					Hash:  chainhash.Hash{},

@@ -13,16 +13,16 @@ import (
 
 	"github.com/btcsuite/btclog"
 	"github.com/jrick/logrotate/rotator"
-	"github.com/ltcsuite/ltcd/addrmgr"
-	"github.com/ltcsuite/ltcd/blockchain"
-	"github.com/ltcsuite/ltcd/blockchain/indexers"
-	"github.com/ltcsuite/ltcd/connmgr"
-	"github.com/ltcsuite/ltcd/database"
-	"github.com/ltcsuite/ltcd/mempool"
-	"github.com/ltcsuite/ltcd/mining"
-	"github.com/ltcsuite/ltcd/mining/cpuminer"
-	"github.com/ltcsuite/ltcd/peer"
-	"github.com/ltcsuite/ltcd/txscript"
+	"github.com/bitbandi/luxd/addrmgr"
+	"github.com/bitbandi/luxd/blockchain"
+	"github.com/bitbandi/luxd/blockchain/indexers"
+	"github.com/bitbandi/luxd/connmgr"
+	"github.com/bitbandi/luxd/database"
+	"github.com/bitbandi/luxd/mempool"
+	"github.com/bitbandi/luxd/mining"
+	"github.com/bitbandi/luxd/mining/cpuminer"
+	"github.com/bitbandi/luxd/peer"
+	"github.com/bitbandi/luxd/txscript"
 )
 
 // logWriter implements an io.Writer that outputs to both standard output and
@@ -62,7 +62,7 @@ var (
 	cmgrLog = backendLog.Logger("CMGR")
 	bcdbLog = backendLog.Logger("BCDB")
 	bmgrLog = backendLog.Logger("BMGR")
-	ltcdLog = backendLog.Logger("BTCD")
+	luxdLog = backendLog.Logger("BTCD")
 	chanLog = backendLog.Logger("CHAN")
 	discLog = backendLog.Logger("DISC")
 	indxLog = backendLog.Logger("INDX")
@@ -95,7 +95,7 @@ var subsystemLoggers = map[string]btclog.Logger{
 	"CMGR": cmgrLog,
 	"BCDB": bcdbLog,
 	"BMGR": bmgrLog,
-	"LTCD": ltcdLog,
+	"LTCD": luxdLog,
 	"CHAN": chanLog,
 	"DISC": discLog,
 	"INDX": indxLog,

@@ -9,7 +9,7 @@ import (
 	"encoding/json"
 	"testing"
 
-	"github.com/ltcsuite/ltcd/btcjson"
+	"github.com/bitbandi/luxd/btcjson"
 )
 
 // TestChainSvrWsResults ensures any results that have custom marshalling

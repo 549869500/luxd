@@ -7,7 +7,7 @@ package wire
 import (
 	"io"
 
-	"github.com/ltcsuite/ltcd/chaincfg/chainhash"
+	"github.com/bitbandi/luxd/chaincfg/chainhash"
 )
 
 type MsgGetCFilter struct {

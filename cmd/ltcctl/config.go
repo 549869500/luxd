@@ -14,8 +14,8 @@ import (
 	"strings"
 
 	flags "github.com/jessevdk/go-flags"
-	"github.com/ltcsuite/ltcd/btcjson"
-	"github.com/ltcsuite/ltcutil"
+	"github.com/bitbandi/luxd/btcjson"
+	"github.com/bitbandi/luxutil"
 )
 
 const (
@@ -26,12 +26,12 @@ const (
 )
 
 var (
-	ltcdHomeDir           = ltcutil.AppDataDir("ltcd", false)
-	ltcctlHomeDir         = ltcutil.AppDataDir("ltcctl", false)
-	ltcwalletHomeDir      = ltcutil.AppDataDir("ltcwallet", false)
+	luxdHomeDir           = luxutil.AppDataDir("luxd", false)
+	ltcctlHomeDir         = luxutil.AppDataDir("ltcctl", false)
+	ltcwalletHomeDir      = luxutil.AppDataDir("ltcwallet", false)
 	defaultConfigFile     = filepath.Join(ltcctlHomeDir, "ltcctl.conf")
 	defaultRPCServer      = "localhost"
-	defaultRPCCertFile    = filepath.Join(ltcdHomeDir, "rpc.cert")
+	defaultRPCCertFile    = filepath.Join(luxdHomeDir, "rpc.cert")
 	defaultWalletCertFile = filepath.Join(ltcwalletHomeDir, "rpc.cert")
 )
 
@@ -216,7 +216,7 @@ func loadConfig() (*config, []string, error) {
 		if preCfg.Wallet {
 			serverConfigPath = filepath.Join(ltcwalletHomeDir, "ltcwallet.conf")
 		} else {
-			serverConfigPath = filepath.Join(ltcdHomeDir, "ltcd.conf")
+			serverConfigPath = filepath.Join(luxdHomeDir, "luxd.conf")
 		}
 
 		err := createDefaultConfigFile(preCfg.ConfigFile, serverConfigPath)
@@ -280,7 +280,7 @@ func loadConfig() (*config, []string, error) {
 }
 
 // createDefaultConfig creates a basic config file at the given destination path.
-// For this it tries to read the config file for the RPC server (either ltcd or
+// For this it tries to read the config file for the RPC server (either luxd or
 // ltcwallet), and extract the RPC user and password from it.
 func createDefaultConfigFile(destinationPath, serverConfigPath string) error {
 	// Read the RPC server config
